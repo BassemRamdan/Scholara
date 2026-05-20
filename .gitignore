@@ -32,18 +32,6 @@ venv.bak/
 .streamlit/secrets.toml
 .streamlit/secrets.json
 
-# ── Trained ML models (large binary files) ────────────────────────────────────
-models/rf_model.pkl
-models/xgb_model.pkl
-models/imputers.pkl
-# Keep metadata and feature names (small, needed for app bootstrap info)
-# models/feature_names.pkl  ← intentionally tracked
-# models/model_metadata.pkl ← intentionally tracked
-
-# ── Dataset (large CSV, not for version control) ──────────────────────────────
-data/raw/
-data/processed/
-
 # ── Jupyter Notebook checkpoints ──────────────────────────────────────────────
 .ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/
@@ -65,3 +53,6 @@ desktop.ini
 # ── Test / scratch files ──────────────────────────────────────────────────────
 test_extract.py
 test_nlp.py
+
+# NOTE: Model .pkl files and dataset are intentionally tracked so Streamlit Cloud
+# can load them without needing to re-train on every cold start.
