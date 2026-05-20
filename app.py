@@ -708,11 +708,22 @@ def load_resources():
     nlp     = EgyptianStudentNLP()
     rec     = RecommendationEngine()
     manager = ConversationManager(nlp, rec)
-    base    = os.path.dirname(__file__)
+    base    = os.path.dirname(os.path.abspath(__file__))
     csv     = os.path.join(base, "data", "raw", "Students Performance Dataset.csv")
     df      = pd.read_csv(csv) if os.path.exists(csv) else None
     mdir    = os.path.join(base, "models")
-    load    = lambda f: joblib.load(os.path.join(mdir, f)) if os.path.exists(os.path.join(mdir, f)) else None
+
+    # Auto-train models if they are missing (e.g. first Streamlit Cloud deploy)
+    rf_path  = os.path.join(mdir, "rf_model.pkl")
+    xgb_path = os.path.join(mdir, "xgb_model.pkl")
+    if (not os.path.exists(rf_path) or not os.path.exists(xgb_path)) and df is not None:
+        try:
+            from src.models.train_and_save import train_models
+            train_models()
+        except Exception:
+            pass  # If training fails, models will be None and UI shows the error message
+
+    load = lambda f: joblib.load(os.path.join(mdir, f)) if os.path.exists(os.path.join(mdir, f)) else None
     return manager, df, load("rf_model.pkl"), load("xgb_model.pkl"), load("feature_names.pkl"), load("model_metadata.pkl")
 
 manager, df_dataset, rf_model, xgb_model, feature_names, metadata = load_resources()
