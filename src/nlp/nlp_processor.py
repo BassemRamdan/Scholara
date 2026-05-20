@@ -93,7 +93,23 @@ class EgyptianStudentNLP:
           - intent          : detected intent label
           - confidence      : cosine similarity score (0-1)
           - extracted_scores: list of integers found in the text
+          - is_greeting     : True if input is a simple greeting
         """
+        cleaned_text = re.sub(r'[^\w\s]', '', user_text).strip().lower()
+        greetings_ar = ["اهلا", "اهلاً", "أهلاً", "سلام", "سلام عليكم", "مرحبا", "مرحباً", "صباح الخير", "مساء الخير", "يا هلا", "هلو"]
+        greetings_en = ["hi", "hello", "hey", "greetings", "good morning", "good evening", "yo", "hello there"]
+
+        is_greeting = cleaned_text in greetings_ar or cleaned_text in greetings_en or any(g in cleaned_text for g in ["أهلاً بك", "اهلا بك", "ازيك"])
+
+        if is_greeting:
+            return {
+                "text": user_text,
+                "intent": "get_advice",
+                "confidence": 0.0,
+                "extracted_scores": [],
+                "is_greeting": True
+            }
+
         embedding = self._model.encode([user_text], convert_to_numpy=True)
 
         best_intent = None
@@ -115,6 +131,7 @@ class EgyptianStudentNLP:
             "intent": best_intent,
             "confidence": round(best_score, 3),
             "extracted_scores": self._extract_numbers(user_text),
+            "is_greeting": False
         }
 
     # ------------------------------------------------------------------

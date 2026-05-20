@@ -1,12 +1,15 @@
+# ── Python ────────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.egg
+*.egg-info/
+.installed.cfg
 .Python
-env/
 build/
-develop-eggs/
 dist/
+develop-eggs/
 downloads/
 eggs/
 .eggs/
@@ -15,11 +18,8 @@ lib64/
 parts/
 sdist/
 var/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual environments
+# ── Virtual environments ───────────────────────────────────────────────────────
 .env
 .venv
 env/
@@ -28,10 +28,40 @@ ENV/
 env.bak/
 venv.bak/
 
-# Streamlit secrets
+# ── Streamlit secrets ─────────────────────────────────────────────────────────
 .streamlit/secrets.toml
 .streamlit/secrets.json
 
-# Test files
+# ── Trained ML models (large binary files) ────────────────────────────────────
+models/rf_model.pkl
+models/xgb_model.pkl
+models/imputers.pkl
+# Keep metadata and feature names (small, needed for app bootstrap info)
+# models/feature_names.pkl  ← intentionally tracked
+# models/model_metadata.pkl ← intentionally tracked
+
+# ── Dataset (large CSV, not for version control) ──────────────────────────────
+data/raw/
+data/processed/
+
+# ── Jupyter Notebook checkpoints ──────────────────────────────────────────────
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── IDE / editor folders ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── OS generated files ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Hidden internal folders ───────────────────────────────────────────────────
+.sixth/
+
+# ── Test / scratch files ──────────────────────────────────────────────────────
 test_extract.py
 test_nlp.py

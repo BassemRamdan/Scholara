@@ -3,6 +3,7 @@ pandas
 numpy
 scikit-learn
 sentence-transformers
-openai
 xgboost
 joblib
+matplotlib
+seaborn
