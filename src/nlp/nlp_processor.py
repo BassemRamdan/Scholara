@@ -1,8 +1,8 @@
 """
-EduGuide NLP Processor
+Scholara NLP Processor
 Uses multilingual sentence embeddings (paraphrase-multilingual-MiniLM-L12-v2)
 for semantic intent detection. Works with Arabic, English, Arabizi, typos, and
-mixed-language input.
+mixed-language input. Runs fully offline — no external API required.
 """
 
 import re
@@ -82,7 +82,7 @@ class EgyptianStudentNLP:
             )
 
     # ------------------------------------------------------------------
-    # Public API
+    # Public Methods
     # ------------------------------------------------------------------
 
     def analyze_input(self, user_text: str) -> dict:

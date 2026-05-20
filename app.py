@@ -767,15 +767,16 @@ FEATURES = [
     ("Participation_Score", t("المشاركة","Participation"), 10,  "record_voice_over", "#f2415a"),
 ]
 
+# Departments and subjects exactly as they appear in the dataset
 DEPT_SUBJECTS = {
-    "CS":          ["Data Structures","Algorithms","Operating Systems","Databases","Computer Networks"],
-    "IT":          ["Networking","System Admin","Cybersecurity","Cloud Computing"],
-    "IS":          ["Information Retrieval","Data Mining","Enterprise Systems","BI & Analytics"],
-    "SWE":         ["Software Engineering","Testing & QA","Project Management","DevOps"],
-    "AI":          ["Machine Learning","Deep Learning","NLP","Computer Vision","Reinforcement Learning"],
-    "Mathematics": ["Calculus","Linear Algebra","Discrete Math","Probability & Statistics"],
-    "Business":    ["Accounting","Marketing","Economics","Management"],
-    "Engineering": ["Physics","Mechanics","Circuits","Thermodynamics"],
+    "CS":          ["Data Structures", "Algorithms", "Operating Systems", "Databases", "Computer Networks",
+                   "Software Engineering", "Machine Learning", "Computer Vision", "NLP", "Cybersecurity"],
+    "Engineering": ["Physics", "Mechanics", "Circuits", "Thermodynamics", "Fluid Dynamics",
+                   "Control Systems", "Signal Processing", "Materials Science"],
+    "Mathematics": ["Calculus", "Linear Algebra", "Discrete Math", "Probability & Statistics",
+                   "Numerical Methods", "Differential Equations", "Real Analysis"],
+    "Business":    ["Accounting", "Marketing", "Economics", "Management",
+                   "Finance", "Business Law", "Entrepreneurship", "Operations Management"],
 }
 
 # ══════════════════════════════════════════════════════════════════════════════

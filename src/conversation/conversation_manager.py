@@ -73,7 +73,7 @@ class ConversationManager:
                 descs, convert_to_numpy=True
             )
 
-    # ── Public API ────────────────────────────────────────────────────────
+    # ── Public Methods ────────────────────────────────────────────────────────
 
     def handle(
         self,
